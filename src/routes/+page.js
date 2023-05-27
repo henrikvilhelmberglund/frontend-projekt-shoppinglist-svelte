@@ -8,7 +8,7 @@ export async function load({ fetch }) {
 	// 	};
 	// }
 
-	const res = await fetch("http://localhost:5173/api/lists");
+	const res = await fetch("/api/lists");
 	const data = await res.json();
 	// can't serialize BSON ID
 
