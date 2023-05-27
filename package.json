@@ -1,6 +1,6 @@
 {
-	"name": "sveltekit-unocss-template",
-	"version": "0.0.8",
+	"name": "frontend-projekt-shoppinglist-svelte",
+	"version": "0.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -28,6 +28,9 @@
 		"@unocss/svelte-scoped": "^0.52.3",
 		"@unocss/transformer-directives": "^0.52.3",
 		"commit-and-tag-version": "^11.0.0",
+		"hvb-console": "^0.0.2",
+		"jsonwebtoken": "^9.0.0",
+		"mongodb": "^5.5.0",
 		"prettier": "^2.8.4",
 		"prettier-plugin-svelte": "^2.8.1",
 		"prettier-plugin-tailwindcss": "^0.3.0",
@@ -36,6 +39,7 @@
 		"svelte": "latest",
 		"svelte-check": "^3.0.1",
 		"svelte-local-storage-store": "^0.4.0",
+		"svelte-multicssclass": "^2.1.1",
 		"svelte-preprocess": "^5.0.3",
 		"typescript": "^5.0.4",
 		"unocss": "^0.52.3",
