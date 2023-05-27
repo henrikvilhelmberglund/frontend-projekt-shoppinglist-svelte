@@ -10,7 +10,8 @@
 </script>
 
 <main class="flex flex-col items-center">
-	<h1 class="p-4 text-3xl">My shopping lists</h1>
+	<h1 class="p-4 text-3xl font-semibold">My shopping lists</h1>
+  <hr class="border-black w-full">
 	<div class="grid grid-cols-2">
 		{#each Object.values(listObjects) as list}
 			<List {list} />
