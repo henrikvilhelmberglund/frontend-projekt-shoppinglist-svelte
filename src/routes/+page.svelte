@@ -11,7 +11,7 @@
 
 <main class="flex flex-col items-center">
 	<h1 class="p-4 text-3xl font-semibold">My shopping lists</h1>
-  <hr class="border-black w-full">
+	<hr class="w-full border-black" />
 	<div class="grid grid-cols-2">
 		{#each Object.values(listObjects) as list}
 			<List {list} />
