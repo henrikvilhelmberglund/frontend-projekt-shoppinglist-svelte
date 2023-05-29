@@ -15,6 +15,7 @@
 		"deploy": "npx gh-pages -d build --dotfiles"
 	},
 	"devDependencies": {
+		"@iconify-json/mdi": "^1.1.52",
 		"@iconify-json/noto": "^1.1.11",
 		"@iconify-json/tabler": "^1.1.68",
 		"@julr/unocss-preset-forms": "^0.0.5",
