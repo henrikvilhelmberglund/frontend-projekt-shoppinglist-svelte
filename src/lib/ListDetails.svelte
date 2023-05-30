@@ -12,7 +12,7 @@
 	class:bg-red-400={color === "red"}
 	class:bg-purple-400={color === "purple"}
 	class="flex justify-between shadow shadow-black">
-	<a href="/" class="i-mdi-arrow-left-drop-circle-outline ml-4 text-4xl h-auto"></a>
+	<a href="/" class="i-mdi-arrow-left-drop-circle-outline ml-4 text-4xl h-auto">Go back</a>
 	<h1 class="p-6 text-3xl font-bold">{listname}</h1>
 	<div />
 </div>
