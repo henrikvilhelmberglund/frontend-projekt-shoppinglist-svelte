@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import { getListsCollection } from "../../../hooks.server";
+import { getListsCollection } from "/src/hooks.server";
 import { ObjectId } from "mongodb";
 
 const listsCollection = await getListsCollection();

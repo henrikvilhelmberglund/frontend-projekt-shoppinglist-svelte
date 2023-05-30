@@ -6,7 +6,7 @@
 
 	async function updateChecked(id, checked) {
 		console.log(id);
-		const res = await fetch(`/api/${id}`, {
+		const res = await fetch(`/api/list/${id}`, {
 			method: "PUT",
 			body: JSON.stringify({ id, checked }),
 			headers: { "content-type": "application/json" },
