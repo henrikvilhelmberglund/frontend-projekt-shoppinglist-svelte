@@ -13,6 +13,6 @@ export async function load({ fetch }) {
 	// can't serialize BSON ID
 
 	return {
-		lists: data.reverse(),
+		lists: data,
 	};
 }
