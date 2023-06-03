@@ -11,7 +11,7 @@ export async function PUT({ request, params }) {
 
 	let list = await listsCollection.findOne({
 		customfield: "grupp_e",
-		_id: params.listid,
+		_id: new ObjectId(params.listid),
 	});
 
 	const itemList = list.itemList || [];
@@ -23,8 +23,8 @@ export async function PUT({ request, params }) {
 	await listsCollection.updateOne(
 		{
 			customfield: "grupp_e",
-			_id: params.listid,
-			itemList: { $elemMatch: { _id: params.itemid } },
+			_id: new ObjectId(params.listid),
+			itemList: { $elemMatch: { _id: new ObjectId(params.itemid) } },
 		},
 		{
 			$set: {
@@ -33,7 +33,7 @@ export async function PUT({ request, params }) {
 		}
 	);
 
-	list = await listsCollection.findOne({ _id: params.listid });
+	list = await listsCollection.findOne({ _id: new ObjectId(params.listid) });
 
 	return json(list);
 }
