@@ -2,7 +2,7 @@
 	import { createEventDispatcher } from "svelte";
 
 	export let list;
-	export let editMode;
+	export let editMode = false;
 
 	// console.log(list);
 	const { listname, itemList, color, _id } = list;
@@ -25,11 +25,13 @@
 	class="m-4 flex h-64 w-64 cursor-pointer flex-col items-center rounded bg-slate-300 shadow shadow-black/50 hover:bg-slate-200"
 	href="/details/{_id}">
 	<h2 class="pt-4 text-2xl font-bold">{listname}</h2>
-	<div class="absolute h-64 w-64">
-		<button
-			on:click|preventDefault={async () => await deleteList(_id)}
-			class="i-mdi-delete?bg absolute right--3 top--2 rounded-full bg-slate-400 text-3xl" />
-	</div>
+	{#if editMode}
+		<div class="absolute h-64 w-64">
+			<button
+				on:click|preventDefault={async () => await deleteList(_id)}
+				class="i-mdi-delete?bg absolute right--3 top--2 rounded-full bg-slate-400 text-3xl" />
+		</div>
+	{/if}
 	<div class="flex flex-col items-center pt-8">
 		{#if itemList}
 			{#each itemList as { itemID: _id, title, checked }}

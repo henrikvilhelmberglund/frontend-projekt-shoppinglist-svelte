@@ -17,8 +17,9 @@
 	<div class="flex w-full flex-row items-center justify-center">
 		<h1 class="w-fit p-4 text-3xl font-semibold">My shopping lists</h1>
 		<button
+    class:shadow-inner;shadow-black={editMode}
 			on:click={() => (editMode = !editMode)}
-			class="i-mdi-dots-vertical absolute right-4 text-3xl" />
+			class="i-mdi-dots-vertical?bg absolute right-4 text-3xl" />
 	</div>
 	<hr class="w-full border-black" />
 	<div class="grid grid-cols-2">
