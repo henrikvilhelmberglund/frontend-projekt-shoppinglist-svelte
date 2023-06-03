@@ -34,17 +34,15 @@
 	}
 
 	async function saveItems(currentList) {
-		itemListArray.forEach(async (object) => {
-			const title = object.title;
-			const checked = object.checked;
+		items.forEach(async (item) => {
 			const res = await fetch(`/api/lists/${currentList}/items`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					title: title,
-					checked: checked,
+					title: item,
+					checked: false,
 				}),
 			});
 
