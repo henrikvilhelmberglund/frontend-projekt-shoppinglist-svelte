@@ -17,6 +17,11 @@
 			<List {list} />
 		{/each}
 	</div>
+	<a
+		href="/create-list"
+		class="i-mdi-plus?bg mt-4 cursor-pointer rounded-full bg-[hsl(214,32%,89%)] text-5xl shadow-md shadow-black/50 hover:bg-slate-200">
+		<p class="text-transparent">Create list</p>
+	</a>
 </main>
 
 <Footer />
