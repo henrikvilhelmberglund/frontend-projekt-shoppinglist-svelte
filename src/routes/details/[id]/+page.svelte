@@ -1,14 +1,18 @@
 <script>
 	import ListDetails from "$lib/ListDetails.svelte";
+	import { invalidateAll } from "$app/navigation";
 
 	export let data;
 
-	const list = data.list;
-
-
+	$: list = data.list;
 </script>
 
-<ListDetails {list} />
+<ListDetails
+	{list}
+	on:newItem={async () => {
+		console.log("new item wow");
+		await invalidateAll();
+	}} />
 
 <style>
 </style>
