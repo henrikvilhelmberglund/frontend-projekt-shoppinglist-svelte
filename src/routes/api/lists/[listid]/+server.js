@@ -17,6 +17,21 @@ export async function GET({ params }) {
 	return json(list);
 }
 
+export async function PUT({ request, params }) {
+	const data = await request.json();
+	console.log("data:", data);
+	const list = await listsCollection.findOne({
+		customfield: "grupp_e",
+		_id: new ObjectId(params.listid),
+	});
+	const updatedList = await listsCollection.updateOne(list, { $set: data });
+
+	return json({
+		success: true,
+		list: data,
+	});
+}
+
 export async function DELETE({ params }) {
 	// console.log(params.listid);
 	const list = await listsCollection.deleteOne({
