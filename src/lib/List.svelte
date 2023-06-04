@@ -34,10 +34,15 @@
 	{/if}
 	<div class="flex flex-col items-center pt-8">
 		{#if itemList}
-			{#each itemList as { itemID: _id, title, checked }}
-				<p class:line-through={checked}>
-					{title}
-				</p>
+			{#each itemList as { itemID: _id, title, checked }, i}
+				{#if i < 6}
+					<p class:line-through={checked}>
+						{title}
+					</p>
+				{/if}
+				{#if i === 7}
+					<p>...</p>
+				{/if}
 			{/each}
 		{/if}
 	</div>
