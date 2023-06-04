@@ -1,12 +1,18 @@
 <script>
+	import { createEventDispatcher } from "svelte";
 	import BackButton from "./BackButton.svelte";
-	import { updateCheckedState, updateListTitle } from "./api";
+	import { addNewListItem, updateCheckedState, updateListTitle } from "./api";
 
 	export let list;
 
 	// console.table(list);
-	let { listname, itemList, color, _id } = list;
+	let { listname, color, _id } = list;
+	// since itemList is a property in an object we need to make it a reactive assignment instead to trigger reactivity
+	$: itemList = list.itemList;
+	const dispatch = createEventDispatcher();
 	let editMode = false;
+	let itemTitle = "";
+	let newItemInput;
 </script>
 
 <div
@@ -53,6 +59,35 @@
 				</p>
 			</div>
 		{/each}
+		{#if editMode}
+			<div class="flex flex-col justify-between">
+				<div>
+					<input
+						class="m-6 mr-0 mt-20 border-2 border-l-0 border-r-0 border-t-0 border-black p-0 pl-1"
+						bind:value={itemTitle}
+						bind:this={newItemInput}
+						on:keydown={async (e) => {
+							if (e.code === "Enter") {
+								await addNewListItem(_id, itemTitle);
+								dispatch("newItem");
+								// addItem(itemTitle);
+								itemTitle = "";
+								newItemInput.focus();
+							}
+						}}
+						placeholder="Add an item..." />
+					<button
+						on:click={async () => {
+							await addNewListItem(_id, itemTitle);
+							dispatch("newItem");
+							// addItem(itemTitle);
+							itemTitle = "";
+							newItemInput.focus();
+						}}
+						class="i-mdi-plus text-lg" />
+				</div>
+			</div>
+		{/if}
 	{/if}
 </div>
 
