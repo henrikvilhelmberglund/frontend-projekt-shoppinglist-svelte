@@ -1,5 +1,5 @@
 /** @type {import('./$types').PageLoad} */
-export async function load({ fetch }) {
+export async function load({ fetch, params }) {
 	// const auth = await checkLoginStatus(fetch);
 	// if (!auth.user) {
 	// 	return {
@@ -8,7 +8,7 @@ export async function load({ fetch }) {
 	// 	};
 	// }
 
-	const res = await fetch("/api/lists");
+	const res = await fetch(`/api/${params.username}/lists`);
 	const data = await res.json();
 	// can't serialize BSON ID
 

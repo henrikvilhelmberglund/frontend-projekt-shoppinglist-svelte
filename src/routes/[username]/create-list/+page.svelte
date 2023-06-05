@@ -1,6 +1,7 @@
 <script>
 	import BackButton from "$lib/BackButton.svelte";
 
+	export let data;
 	let colors = ["default", "red", "orange", "yellow", "green", "blue", "purple"];
 	let selectedColor = "default";
 	let listTitle = "New list";
@@ -13,12 +14,13 @@
 	}
 
 	async function saveList() {
-		const res = await fetch(`/api/lists`, {
+		const res = await fetch(`/api/${data.username}/lists`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
+				username: data.username,
 				listname: listTitle,
 				customfield: "grupp_e",
 				color: selectedColor,
@@ -35,7 +37,7 @@
 
 	async function saveItems(currentList) {
 		items.forEach(async (item) => {
-			const res = await fetch(`/api/lists/${currentList}/items`, {
+			const res = await fetch(`/api/${data.username}/lists/${currentList}/items`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -60,7 +62,7 @@
 	class:bg-blue-500={selectedColor === "blue"}
 	class:bg-purple-500={selectedColor === "purple"}
 	class="flex items-center justify-between shadow shadow-black">
-	<BackButton />
+	<BackButton username={data.username} />
 	<input
 		type="text"
 		class="!m-0 h-fit w-fit rounded border-0 !p-0 text-center text-3xl font-bold focus:ring-2 focus:ring-black"

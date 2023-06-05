@@ -7,6 +7,7 @@
 </script>
 
 <ListDetails
+username={data.username}
 	{list}
 	/>
 

@@ -10,6 +10,7 @@
 	} from "./api";
 
 	export let list;
+  export let username;
 
 	// console.table(list);
 	let { listname, color: activeColor, _id } = list;
@@ -30,7 +31,7 @@
 	class:bg-blue-400={activeColor === "blue"}
 	class:bg-purple-400={activeColor === "purple"}
 	class="flex items-center justify-between shadow shadow-black">
-	<BackButton />
+	<BackButton {username} />
 	{#if !editMode}
 		<h1 class="p-6 text-3xl font-bold">{listname}</h1>
 	{:else if editMode}

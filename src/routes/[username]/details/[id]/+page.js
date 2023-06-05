@@ -8,7 +8,8 @@ export async function load({ fetch, params }) {
 	// 	};
 	// }
 
-	const res = await fetch(`/api/lists/${params.id}`);
+
+	const res = await fetch(`/api/${params.username}/lists/${params.id}`);
 	const data = await res.json();
 	console.log(data);
 	// can't serialize BSON ID

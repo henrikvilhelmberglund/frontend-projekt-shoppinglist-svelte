@@ -4,6 +4,7 @@
 	const dispatch = createEventDispatcher();
 
 	export let list;
+  export let username;
 	export let editMode = false;
 
 	// console.log(list);
@@ -16,7 +17,7 @@
 			console.log(id, "wrong");
 			return;
 		}
-		const res = await fetch(`${API_BASE}/lists/${id}`, {
+		const res = await fetch(`${API_BASE}/${username}/lists/${id}`, {
 			method: "DELETE",
 		});
 		dispatch("deletedList");
@@ -31,7 +32,7 @@
 	class:bg-blue-400;!hover-bg-blue-500={color === "blue"}
 	class:bg-purple-400;!hover-bg-purple-500={color === "purple"}
 	class="m-4 flex h-64 w-64 cursor-pointer flex-col items-center rounded bg-slate-300 shadow shadow-black/50 hover:bg-slate-200"
-	href="/details/{_id}">
+	href="{username}/details/{_id}">
 	<h2 class="pt-4 text-2xl font-bold">{listname}</h2>
 	{#if editMode}
 		<div class="absolute h-64 w-64">
