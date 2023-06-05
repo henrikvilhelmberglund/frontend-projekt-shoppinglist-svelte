@@ -9,7 +9,7 @@
 		height="40"
 		viewBox="0 0 40 40"
 		fill="none"
-		xmlns="http://www.w3.org/2000/svg"><use xlink:href="logo.svg#logo" /></svg>
+		xmlns="http://www.w3.org/2000/svg"><use xlink:href="/logo.svg#logo" /></svg>
 	<a href="/settings" class="i-mdi-gear mr-2 text-3xl">
 		<p class="text-transparent hidden">Settings</p>
 	</a>
