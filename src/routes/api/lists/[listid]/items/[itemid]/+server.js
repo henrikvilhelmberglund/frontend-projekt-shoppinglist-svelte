@@ -37,3 +37,29 @@ export async function PUT({ request, params }) {
 
 	return json(list);
 }
+
+export async function DELETE({ params }) {
+	let list = await listsCollection.findOne({ _id: new ObjectId(params.listid) });
+
+	if (!list) {
+		return json({ status: 404, message: "List not found, did you use a correct ID?" });
+	}
+
+	if (ObjectId.isValid(params.itemid) === false) {
+		return json({ status: 404, message: "Item not found, did you use a correct ID?" });
+	}
+
+	await listsCollection.updateOne(
+		{ customfield: "grupp_e", _id: new ObjectId(params.listid) },
+		{
+			$pull: { itemList: { _id: new ObjectId(params.itemid) } },
+		}
+	);
+
+	list = await listsCollection.findOne({ _id: new ObjectId(params.listid) });
+
+	return json({
+		success: true,
+		list,
+	});
+}

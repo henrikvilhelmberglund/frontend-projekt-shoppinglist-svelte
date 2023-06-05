@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher } from "svelte";
 	import BackButton from "./BackButton.svelte";
-	import { addNewListItem, updateCheckedState, updateListTitle } from "./api";
+	import { addNewListItem, deleteListItem, updateCheckedState, updateListTitle } from "./api";
 
 	export let list;
 
@@ -43,17 +43,26 @@
 	{#if itemList}
 		{#each itemList as { _id: itemID, title, checked }}
 			<div class="flex flex-row items-center gap-3 pl-2 pt-2">
-				<input
-					on:change={async () => {
-						let newCheckedValue = !checked;
-						console.log(_id, itemID, newCheckedValue);
-						await updateCheckedState(_id, itemID, newCheckedValue);
-					}}
-					class="peer block h-6 w-6 rounded-full text-slate-500 checked:h-6 checked:w-6 checked:bg-slate-500"
-					type="checkbox"
-					{checked}
-					name={title}
-					id="" />
+				{#if !editMode}
+					<input
+						on:change={async () => {
+							let newCheckedValue = !checked;
+							console.log(_id, itemID, newCheckedValue);
+							await updateCheckedState(_id, itemID, newCheckedValue);
+						}}
+						class="peer block h-6 w-6 rounded-full text-slate-500 checked:h-6 checked:w-6 checked:bg-slate-500"
+						type="checkbox"
+						{checked}
+						name={title}
+						id="" />
+				{:else if editMode}
+					<button
+						on:click={async () => {
+							await deleteListItem(_id, itemID);
+							dispatch("deletedItem");
+						}}
+						class="i-mdi-delete text-2xl" />
+				{/if}
 				<p class="peer-checked:line-through">
 					{title}
 				</p>

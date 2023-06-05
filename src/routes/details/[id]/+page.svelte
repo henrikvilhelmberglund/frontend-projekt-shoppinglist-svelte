@@ -10,7 +10,9 @@
 <ListDetails
 	{list}
 	on:newItem={async () => {
-		console.log("new item wow");
+		await invalidateAll();
+	}}
+	on:deletedItem={async () => {
 		await invalidateAll();
 	}} />
 
