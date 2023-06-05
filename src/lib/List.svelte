@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from "svelte";
+	import { API_BASE } from "./api";
 	const dispatch = createEventDispatcher();
 
 	export let list;
@@ -24,10 +25,10 @@
 
 <a
 	class:bg-red-400;!hover-bg-red-500={color === "red"}
-  class:bg-orange-400;!hover-bg-orange-500={color === "orange"}
-  class:bg-yellow-400;!hover-bg-yellow-500={color === "yellow"}
-  class:bg-green-400;!hover-bg-green-500={color === "green"}
-  class:bg-blue-400;!hover-bg-blue-500={color === "blue"}
+	class:bg-orange-400;!hover-bg-orange-500={color === "orange"}
+	class:bg-yellow-400;!hover-bg-yellow-500={color === "yellow"}
+	class:bg-green-400;!hover-bg-green-500={color === "green"}
+	class:bg-blue-400;!hover-bg-blue-500={color === "blue"}
 	class:bg-purple-400;!hover-bg-purple-500={color === "purple"}
 	class="m-4 flex h-64 w-64 cursor-pointer flex-col items-center rounded bg-slate-300 shadow shadow-black/50 hover:bg-slate-200"
 	href="/details/{_id}">

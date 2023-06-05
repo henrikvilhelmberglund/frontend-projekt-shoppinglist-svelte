@@ -1,4 +1,4 @@
-const API_BASE = "/api";
+export const API_BASE = "/api";
 
 export async function filterByName(name) {
 	let json = await getAllLists();
