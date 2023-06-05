@@ -10,7 +10,7 @@
 	} from "./api";
 
 	export let list;
-  export let username;
+	export let username;
 
 	// console.table(list);
 	let { listname, color: activeColor, _id } = list;
@@ -75,8 +75,8 @@
 				{:else if editMode}
 					<button
 						on:click={async () => {
-							await deleteListItem(_id, itemID);
-							list = await getListUsingID(_id);
+							await deleteListItem(username, _id, itemID);
+							list = await getListUsingID(username, _id);
 						}}
 						class="i-mdi-delete text-2xl" />
 				{/if}
@@ -94,8 +94,8 @@
 						bind:this={newItemInput}
 						on:keydown={async (e) => {
 							if (e.code === "Enter") {
-								await addNewListItem(_id, itemTitle);
-								list = await getListUsingID(_id);
+								await addNewListItem(username, _id, itemTitle);
+								list = await getListUsingID(username, _id);
 								// addItem(itemTitle);
 								itemTitle = "";
 								newItemInput.focus();
@@ -104,8 +104,8 @@
 						placeholder="Add an item..." />
 					<button
 						on:click={async () => {
-							await addNewListItem(_id, itemTitle);
-							list = await getListUsingID(_id);
+							await addNewListItem(username, _id, itemTitle);
+							list = await getListUsingID(username, _id);
 							// addItem(itemTitle);
 							itemTitle = "";
 							newItemInput.focus();

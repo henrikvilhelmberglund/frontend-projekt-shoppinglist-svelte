@@ -48,14 +48,14 @@ export async function getListsUsingCustomField() {
 
 //  funktion som deletear list-item
 
-export async function deleteListItem(listId, listItemId) {
-	await fetch(`${API_BASE}/lists/${listId}/items/${listItemId}`, {
+export async function deleteListItem(username, listId, listItemId) {
+	await fetch(`${API_BASE}/${username}/lists/${listId}/items/${listItemId}`, {
 		method: "DELETE",
 	});
 }
 
-export async function updateListItem(itemTitle, listId, listItemId) {
-	await fetch(`${API_BASE}/lists/${listId}/items/${listItemId}`, {
+export async function updateListItem(username, itemTitle, listId, listItemId) {
+	await fetch(`${API_BASE}/${username}/lists/${listId}/items/${listItemId}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
@@ -80,9 +80,9 @@ export async function updateListTitle(listTitle, listId) {
 }
 
 //Funktion för att lägga till nytt listitem i befintlig lista
-export async function addNewListItem(listId, listiteminput) {
+export async function addNewListItem(username, listId, listiteminput) {
 	const title = listiteminput;
-	const res = await fetch(`${API_BASE}/lists/${listId}/items`, {
+	const res = await fetch(`${API_BASE}/${username}/lists/${listId}/items`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
