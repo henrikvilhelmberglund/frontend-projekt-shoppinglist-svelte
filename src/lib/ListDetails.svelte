@@ -135,7 +135,7 @@
 						value={color}
 						bind:group={selectedColor}
 						on:change={async () => {
-							activeColor = await updateColor(selectedColor, _id);
+							activeColor = await updateColor(username, selectedColor, _id);
 						}} />
 				{/each}
 			</div>

@@ -95,8 +95,8 @@ export async function addNewListItem(listId, listiteminput) {
 	const { list } = await res.json();
 }
 
-export async function updateColor(color, listId) {
-	await fetch(`${API_BASE}/lists/${listId}`, {
+export async function updateColor(username, color, listId) {
+	await fetch(`${API_BASE}/${username}/lists/${listId}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
