@@ -28,8 +28,8 @@ export async function getAllLists() {
 }
 
 // funktion som hämtar en lista med ett speciellt värde
-export async function getListUsingID(id) {
-	const res = await fetch(`${API_BASE}/lists/${id}`);
+export async function getListUsingID(username, id) {
+	const res = await fetch(`${API_BASE}/${username}/lists/${id}`);
 	let data = await res.json();
 
 	let stringifiedData = JSON.stringify(data);
