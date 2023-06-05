@@ -1,11 +1,14 @@
 import { json } from "@sveltejs/kit";
-import { getListsCollection } from "../../../hooks.server";
+import { getListsCollection } from "/src/hooks.server";
 
 const listsCollection = await getListsCollection();
 
 /** @type {import('./$types').RequestHandler} */
-export async function GET() {
-	const lists = await listsCollection.find({ customfield: "grupp_e" }).toArray();
+export async function GET({ params }) {
+	console.log(params);
+	const lists = await listsCollection
+		.find({ customfield: "grupp_e", username: params.username })
+		.toArray();
 
 	return json(lists);
 }
