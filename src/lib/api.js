@@ -125,8 +125,8 @@ export async function createCustomList(listname, color) {
 	// const { list } = await res.json();
 }
 
-export async function updateCheckedState(currentListId, item_id, checked_state) {
-	await fetch(`${API_BASE}/lists/${currentListId}/items/${item_id}`, {
+export async function updateCheckedState(username, currentListId, item_id, checked_state) {
+	await fetch(`${API_BASE}/${username}/lists/${currentListId}/items/${item_id}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",

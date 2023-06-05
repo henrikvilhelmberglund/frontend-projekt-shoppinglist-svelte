@@ -65,7 +65,7 @@
 						on:change={async () => {
 							let newCheckedValue = !checked;
 							console.log(_id, itemID, newCheckedValue);
-							await updateCheckedState(_id, itemID, newCheckedValue);
+							await updateCheckedState(username, _id, itemID, newCheckedValue);
 						}}
 						class="peer block h-6 w-6 rounded-full text-slate-500 checked:h-6 checked:w-6 checked:bg-slate-500"
 						type="checkbox"
