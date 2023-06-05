@@ -17,7 +17,7 @@
 	<div class="flex w-full flex-row items-center justify-center">
 		<h1 class="w-fit p-4 text-3xl font-semibold">My shopping lists</h1>
 		<button
-    class:shadow-inner;shadow-black={editMode}
+			class:shadow-inner;shadow-black={editMode}
 			on:click={() => (editMode = !editMode)}
 			class="i-mdi-dots-vertical?bg absolute right-4 text-3xl" />
 	</div>
@@ -35,7 +35,7 @@
 	<a
 		href="/create-list"
 		class="i-mdi-plus?bg mt-4 cursor-pointer rounded-full bg-[hsl(214,32%,89%)] text-5xl shadow-md shadow-black/50 hover:bg-slate-200">
-		<p class="text-transparent">Create list</p>
+		<p class="hidden text-transparent">Create list</p>
 	</a>
 </main>
 
