@@ -8,6 +8,19 @@ let user;
 
 /** @type {import('@sveltejs/kit').Handle} */
 export const handle = async ({ event, resolve }) => {
+	// Apply CORS header for API routes
+	if (event.url.pathname.startsWith("/api")) {
+		// Required for CORS to work
+		if (event.request.method === "OPTIONS") {
+			return new Response(null, {
+				headers: {
+					"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+					"Access-Control-Allow-Origin": "*",
+					"Access-Control-Allow-Headers": "*",
+				},
+			});
+		}
+	}
 	// get cookies from browser
 	const session = event.cookies.get("AuthorizationToken");
 
@@ -42,6 +55,10 @@ export const handle = async ({ event, resolve }) => {
 		transformPageChunk: ({ html }) =>
 			html.replace("%unocss-svelte-scoped.global%", "unocss_svelte_scoped_global_styles"),
 	});
+	// add to response headers to allow /api connections from outside of the server
+	if (event.url.pathname.startsWith("/api")) {
+		response.headers.append("Access-Control-Allow-Origin", `*`);
+	}
 	return response;
 };
 
